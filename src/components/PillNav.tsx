@@ -306,7 +306,7 @@ const PillNav = ({
                   <Link
                     role="menuitem"
                     href={item.href}
-                    className={`pill${activeHref === item.href ? ' is-active' : ''}`}
+                    className={`pill cursor-target${activeHref === item.href ? ' is-active' : ''}`}
                     aria-label={item.ariaLabel || item.label}
                     onMouseEnter={() => handleEnter(i)}
                     onMouseLeave={() => handleLeave(i)}
@@ -329,7 +329,7 @@ const PillNav = ({
                   <a
                     role="menuitem"
                     href={item.href}
-                    className={`pill${activeHref === item.href ? ' is-active' : ''}`}
+                    className={`pill cursor-target${activeHref === item.href ? ' is-active' : ''}`}
                     aria-label={item.ariaLabel || item.label}
                     onMouseEnter={() => handleEnter(i)}
                     onMouseLeave={() => handleLeave(i)}

@@ -64,7 +64,7 @@ export default function Home() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/75 to-black" aria-hidden />
       <FallingDroplets className="z-10" />
 
-      <div className="relative z-20 flex w-full justify-center cursor-target">
+      <div className="relative z-20 flex w-full justify-center">
         <PillNav
           logo="/croppped-carbox-logo-black.svg"
           logoAlt="CarbonX logo"
