@@ -1,9 +1,18 @@
+import PillNav from "@/components/PillNav";
 import Squares from "@/components/Squares";
+import { FallingDroplets } from "@/components/FallingDroplets";
 
 const stats = [
   { label: "Hours of building", value: "36" },
   { label: "Total prizes", value: "$10k" },
   { label: "Builders", value: "300+" },
+];
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Tracks", href: "#tracks" },
+  { label: "Schedule", href: "#schedule" },
+  { label: "FAQs", href: "#faqs" },
 ];
 
 export default function Home() {
@@ -18,6 +27,21 @@ export default function Home() {
         hoverFillColor="#222"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/75 to-black" aria-hidden />
+      <FallingDroplets className="z-10" />
+
+      <div className="relative z-20 flex w-full justify-center">
+        <PillNav
+          logo="/croppped-carbox-logo-black.svg"
+          logoAlt="CarbonX logo"
+          items={navItems}
+          activeHref="/"
+          ease="power2.easeOut"
+          baseColor="#ffffff"
+          pillColor="#060010"
+          hoveredPillTextColor="#060010"
+          pillTextColor="#ffffff"
+        />
+      </div>
 
       <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center gap-10 px-6 py-24 text-center sm:gap-12 sm:px-12">
         <p className="text-xs font-semibold uppercase tracking-[0.6em] text-zinc-300">

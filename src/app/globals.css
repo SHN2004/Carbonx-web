@@ -41,6 +41,15 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --animate-beam-move: beam-move 8s linear infinite;
+  @keyframes beam-move {
+  0% {
+    transform: translateX(0);
+    }
+  100% {
+    transform: translateX(100vw);
+    }
+  }
 }
 
 :root {
