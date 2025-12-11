@@ -24,10 +24,21 @@
 
 @media (max-width: 768px) {
   .pill-nav {
-    width: 100%;
-    justify-content: space-between;
-    padding: 0 1rem;
-    background: transparent;
+    --nav-h: 34px;
+    --logo: 30px;
+    --pill-pad-x: 14px;
+    --pill-gap: 2px;
+    transform: scale(0.92);
+    transform-origin: top center;
+  }
+
+  .pill {
+    font-size: 12px;
+    letter-spacing: 0.4px;
+  }
+
+  .pill-nav-items {
+    padding: 0 4px;
   }
 }
 
@@ -94,6 +105,7 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: background 0.2s ease;
 }
 
 .pill .hover-circle {
@@ -162,6 +174,16 @@
   .mobile-only {
     display: block;
   }
+
+  .pill-nav {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+  }
+
+  .pill-nav-items {
+    display: none;
+  }
 }
 
 .mobile-menu-button {
@@ -183,6 +205,8 @@
 @media (max-width: 768px) {
   .mobile-menu-button {
     display: flex;
+    position: absolute;
+    right: 0.25rem;
   }
 }
 
@@ -197,12 +221,15 @@
 
 .mobile-menu-popover {
   position: absolute;
-  top: 3em;
+  top: calc(var(--nav-h) + 1rem);
   left: 1rem;
   right: 1rem;
-  background: var(--base, #f0f0f0);
-  border-radius: 27px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(145deg, #111014, #09070b);
+  border-radius: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
   z-index: 998;
   opacity: 0;
   transform-origin: top center;
@@ -212,26 +239,30 @@
 .mobile-menu-list {
   list-style: none;
   margin: 0;
-  padding: 3px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 14px;
 }
 
 .mobile-menu-popover .mobile-menu-link {
   display: block;
-  padding: 12px 16px;
-  color: var(--pill-text, #fff);
-  background-color: var(--pill-bg, #fff);
+  padding: 12px 20px;
+  color: #0b0b0f;
+  background-color: #f4f3fb;
   text-decoration: none;
   font-size: 16px;
-  font-weight: 500;
-  border-radius: 50px;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .mobile-menu-popover .mobile-menu-link:hover {
   cursor: pointer;
-  background-color: var(--base);
-  color: var(--hover-text, #fff);
+  transform: translateY(-1px);
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
 }
