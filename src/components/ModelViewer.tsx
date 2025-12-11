@@ -153,9 +153,7 @@ const ModelInner: FC<ModelInnerProps> = ({
     g.updateWorldMatrix(true, true);
 
     const sphere = new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere());
-    const s = 1 / (sphere.radius * 2);
     g.position.set(-sphere.center.x, -sphere.center.y, -sphere.center.z);
-    g.scale.setScalar(s);
 
     g.traverse((o: THREE.Object3D) => {
       if (isMeshObject(o)) {
@@ -177,7 +175,7 @@ const ModelInner: FC<ModelInnerProps> = ({
 
     if (autoFrame && (camera as THREE.PerspectiveCamera).isPerspectiveCamera) {
       const persp = camera as THREE.PerspectiveCamera;
-      const fitR = sphere.radius * s;
+      const fitR = sphere.radius;
       const d = (fitR * 1.2) / Math.sin((persp.fov * Math.PI) / 180 / 2);
       persp.position.set(pivotW.current.x, pivotW.current.y, pivotW.current.z + d);
       persp.near = d / 10;
