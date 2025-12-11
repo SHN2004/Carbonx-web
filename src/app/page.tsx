@@ -127,19 +127,18 @@ export default function Home() {
               width="100%"
               height="min(75vh, 520px)"
               modelYOffset={-0.15}
-              defaultRotationX={-90}
-              defaultRotationY={3}
-              defaultZoom={2.5}
-              minZoomDistance={4}
-              maxZoomDistance={15}
+              defaultRotationX={-50}
+              defaultRotationY={20}
+              defaultZoom={.5}
+              minZoomDistance={3.5}
+              maxZoomDistance={10}
               ambientIntensity={1}
               keyLightIntensity={2.5}
               fillLightIntensity={1.1}
               rimLightIntensity={1.3}
               environmentPreset="sunset"
-              autoFrame
               autoRotate
-              autoRotateSpeed={0.2}
+              autoRotateSpeed={0.45}
               enableHoverRotation={false}
               enableManualRotation={false}
               enableManualZoom={false}
