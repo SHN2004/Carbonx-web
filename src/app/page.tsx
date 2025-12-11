@@ -126,11 +126,12 @@ export default function Home() {
               url="/models/apollo_ie/scene.gltf"
               width="100%"
               height="min(75vh, 520px)"
-              modelYOffset={-0.1}
+              modelYOffset={-0.15}
               defaultRotationX={-90}
               defaultRotationY={3}
-              defaultZoom={10}
-              minZoomDistance={4.2}
+              defaultZoom={2.5}
+              minZoomDistance={4}
+              maxZoomDistance={15}
               ambientIntensity={1}
               keyLightIntensity={2.5}
               fillLightIntensity={1.1}
