@@ -1,11 +1,14 @@
 "use client";
 
 import { useCallback, type CSSProperties, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 
 import PillNav from "@/components/PillNav";
 import Squares from "@/components/Squares";
 import { FallingDroplets } from "@/components/FallingDroplets";
-import TargetCursor from "@/components/TargetCursor";
+import ModelViewer from "@/components/ModelViewer";
+
+const TargetCursor = dynamic(() => import("@/components/TargetCursor"), { ssr: false });
 
 const stats = [
   { label: "Hours of building", value: "36" },
@@ -19,6 +22,13 @@ const navItems = [
   { label: "Schedule", href: "#schedule" },
   { label: "FAQs", href: "#faqs" },
 ];
+
+type TimeLeft = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
 
 const EVENT_DATE = new Date("2026-02-01T15:00:00Z");
 
@@ -34,13 +44,12 @@ function useCountdown(targetDate: Date) {
     };
   }, [targetDate]);
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
+    const update = () => setTimeLeft(calculateTimeLeft());
+    update();
+    const timer = setInterval(update, 1000);
     return () => clearInterval(timer);
   }, [calculateTimeLeft]);
 
@@ -49,6 +58,7 @@ function useCountdown(targetDate: Date) {
 
 export default function Home() {
   const timeLeft = useCountdown(EVENT_DATE);
+  const displayTime = timeLeft ?? { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black text-white">
@@ -79,19 +89,15 @@ export default function Home() {
       </div>
 
       <main className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center gap-10 px-6 py-24 text-center sm:gap-12 sm:px-12">
-        <p className="text-xs font-semibold uppercase tracking-[0.6em] text-zinc-300">
-          CarbonX Hackathon
-        </p>
-        <div className="space-y-6">
-          <h1 className="text-4xl font-semibold uppercase tracking-[0.3em] sm:text-5xl">
-            Starts in
-          </h1>
-          <div className="grid grid-flow-col gap-6 text-center text-white/90 auto-cols-max">
+        <div className="space-y-4 text-center">
+          <h1 className="text-4xl font-semibold uppercase tracking-[0.8em] sm:text-5xl">CarbonX</h1>
+          <p className="text-xs uppercase tracking-[0.6em] text-zinc-400">Starts in</p>
+          <div className="grid grid-flow-col gap-6 text-center text-white/90 auto-cols-max justify-center mx-auto">
             {[
-              { label: "days", value: timeLeft.days },
-              { label: "hours", value: timeLeft.hours },
-              { label: "minutes", value: timeLeft.minutes },
-              { label: "seconds", value: timeLeft.seconds },
+              { label: "days", value: displayTime.days },
+              { label: "hours", value: displayTime.hours },
+              { label: "minutes", value: displayTime.minutes },
+              { label: "seconds", value: displayTime.seconds },
             ].map((segment) => (
               <div key={segment.label} className="flex flex-col items-center gap-2">
                 <span className="countdown font-mono text-5xl">
@@ -111,6 +117,35 @@ export default function Home() {
                 <span className="text-sm uppercase tracking-[0.3em] text-zinc-400">{segment.label}</span>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="space-y-4 w-full">
+          <div className="relative left-1/2 flex w-screen -translate-x-1/2 justify-center">
+            <ModelViewer
+              url="/models/apollo_ie/scene.gltf"
+              width="100%"
+              height="min(75vh, 520px)"
+              modelYOffset={-0.1}
+              defaultRotationX={-90}
+              defaultRotationY={3}
+              defaultZoom={10}
+              minZoomDistance={4.2}
+              ambientIntensity={1}
+              keyLightIntensity={2.5}
+              fillLightIntensity={1.1}
+              rimLightIntensity={1.3}
+              environmentPreset="sunset"
+              autoFrame
+              autoRotate
+              autoRotateSpeed={0.2}
+              enableHoverRotation={false}
+              enableManualRotation={false}
+              enableManualZoom={false}
+              showScreenshotButton={false}
+              fadeIn
+              exposure={0.5}
+            />
           </div>
         </div>
 
