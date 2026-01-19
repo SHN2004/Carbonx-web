@@ -126,7 +126,7 @@ export default function Home() {
               url="/models/apollo_ie/scene.gltf"
               width="100%"
               height="min(75vh, 520px)"
-              modelYOffset={.6}
+              modelYOffset={0.2}
               defaultRotationX={-50}
               defaultRotationY={20}
               defaultZoom={.5}
@@ -138,7 +138,7 @@ export default function Home() {
               rimLightIntensity={1.3}
               environmentPreset="sunset"
               autoRotate
-              autoRotateSpeed={0.45}
+              autoRotateSpeed={0.15}
               enableHoverRotation={false}
               enableManualRotation={false}
               enableManualZoom={false}
