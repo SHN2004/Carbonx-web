@@ -5,14 +5,13 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun run dev
+
+# If you want Turbopack (faster dev), use:
+bun run dev:turbo
 ```
+
+If `dev:turbo` fails with missing `@next/swc-*` binaries, reinstall dependencies (e.g. `rm -rf node_modules && bun install`) or keep using `bun run dev` (webpack).
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
