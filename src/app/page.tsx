@@ -1,4 +1,4 @@
-import Particles from "@/components/Particles";
+import ResponsiveParticles from "@/components/ResponsiveParticles";
 import BlurText from "@/components/BlurText";
 import Magnet from "@/components/Magnet";
 import AnimatedContent from "@/components/AnimatedContent";
@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <div id="top" className="landing-surface min-h-screen">
       <div className="landing-bg" aria-hidden="true">
-        <Particles
+        <ResponsiveParticles
           className="landing-bg-particles"
           particleColors={["#ffffff"]}
           particleCount={240}
