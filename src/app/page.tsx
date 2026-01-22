@@ -1,9 +1,14 @@
 import Particles from "@/components/Particles";
+import BlurText from "@/components/BlurText";
+import Magnet from "@/components/Magnet";
+import AnimatedContent from "@/components/AnimatedContent";
+import GlareHover from "@/components/GlareHover";
+import DecryptedText from "@/components/DecryptedText";
 
 const stats = [
-  { label: "Duration", value: "42 hours" },
-  { label: "Participants", value: "250+ expected" },
-  { label: "Visitors", value: "3000+ expected" },
+  { label: "Duration", valueNumber: "42", valueSuffix: " hours" },
+  { label: "Participants", valueNumber: "250+", valueSuffix: " expected" },
+  { label: "Visitors", valueNumber: "3000+", valueSuffix: " expected" },
 ];
 
 const tracks = [
@@ -146,28 +151,82 @@ export default function Home() {
 
         <main id="content" className="landing-shell">
           <section className="landing-hero" aria-label="CarbonX overview">
-            <p className="landing-kicker">Innovation beyond boundaries</p>
+            <BlurText
+              text="Innovation beyond boundaries"
+              className="landing-kicker"
+              animateBy="words"
+              delay={90}
+              direction="bottom"
+              threshold={0.4}
+            />
             <h1 className="landing-title">
-              CarbonX <span className="landing-title-year">2026</span>
+              <BlurText
+                text="CarbonX"
+                animateBy="characters"
+                delay={30}
+                direction="bottom"
+                threshold={0.6}
+              />{" "}
+              <span className="landing-title-year">
+                <BlurText
+                  text="2026"
+                  animateBy="characters"
+                  delay={45}
+                  direction="bottom"
+                  threshold={0.6}
+                />
+              </span>
             </h1>
+            <div className="landing-prize" aria-label="Prize pool">
+              <DecryptedText
+                text="₹1,00,000"
+                className="landing-prize-value"
+                durationMs={1200}
+                speedMs={34}
+                animateOnView
+                threshold={0.75}
+              />
+              <span className="landing-prize-label">Prize pool</span>
+            </div>
             <p className="landing-subtitle">
               A 42-hour national hackathon where developers, innovators, and students
               from across India team up to build practical, high-impact solutions.
             </p>
             <div className="landing-actions">
-              <a className="landing-button" href="#register">
-                Register now
-              </a>
-              <a className="landing-button-secondary" href="#about">
-                Learn more
-              </a>
+              <Magnet magnitude={0.22} maxDistance={180} className="inline-flex">
+                <a className="landing-button" href="#register">
+                  Register now
+                </a>
+              </Magnet>
+              <Magnet magnitude={0.18} maxDistance={160} className="inline-flex">
+                <a className="landing-button-secondary" href="#about">
+                  Learn more
+                </a>
+              </Magnet>
             </div>
             <dl className="landing-stats" aria-label="Event stats">
               {stats.map((item) => (
-                <div key={item.label} className="landing-stat">
-                  <dt>{item.label}</dt>
-                  <dd>{item.value}</dd>
-                </div>
+                <AnimatedContent
+                  key={item.label}
+                  distance={18}
+                  duration={0.6}
+                  delay={0.04}
+                >
+                  <GlareHover glareOpacity={0.08} glareSize={320} className="landing-stat">
+                    <dt>{item.label}</dt>
+                    <dd>
+                      <DecryptedText
+                        text={item.valueNumber}
+                        className="landing-stat-number"
+                        durationMs={2000}
+                        speedMs={30}
+                        animateOnView
+                        threshold={0.9}
+                      />
+                      <span className="landing-stat-suffix">{item.valueSuffix}</span>
+                    </dd>
+                  </GlareHover>
+                </AnimatedContent>
               ))}
             </dl>
           </section>
@@ -196,9 +255,11 @@ export default function Home() {
                 Registration opens soon. This is a placeholder button while we wire up
                 the registration flow.
               </p>
-              <button className="landing-button landing-button-inline" type="button">
-                Register now
-              </button>
+              <Magnet magnitude={0.2} maxDistance={160} className="inline-flex">
+                <button className="landing-button landing-button-inline" type="button">
+                  Register now
+                </button>
+              </Magnet>
 
               <p className="landing-fineprint">
                 No fee • Limited seats • Shortlist in 72 hours
@@ -213,25 +274,37 @@ export default function Home() {
             <p className="landing-section-hint">What you’re signing up for.</p>
           </div>
           <div className="landing-about">
-            <div className="landing-about-card">
-              <h3 className="landing-about-title">A 42-hour build</h3>
-              <p className="landing-about-copy">
-                Round-the-clock problem-solving, prototyping, and demos — built for
-                teams that ship.
-              </p>
-            </div>
-            <div className="landing-about-card">
-              <h3 className="landing-about-title">Mentors + industry</h3>
-              <p className="landing-about-copy">
-                Meet experts, get feedback, and refine your story for a live demo arena.
-              </p>
-            </div>
-            <div className="landing-about-card">
-              <h3 className="landing-about-title">High-impact tracks</h3>
-              <p className="landing-about-copy">
-                Sustainability, hardware, and anything bold with a clear real-world impact.
-              </p>
-            </div>
+            <AnimatedContent distance={22} duration={0.65} delay={0.02}>
+              <GlareHover glareOpacity={0.09} glareSize={320} className="landing-about-card">
+                <div>
+                  <h3 className="landing-about-title">A 42-hour build</h3>
+                  <p className="landing-about-copy">
+                    Round-the-clock problem-solving, prototyping, and demos — built for
+                    teams that ship.
+                  </p>
+                </div>
+              </GlareHover>
+            </AnimatedContent>
+            <AnimatedContent distance={22} duration={0.65} delay={0.08}>
+              <GlareHover glareOpacity={0.09} glareSize={320} className="landing-about-card">
+                <div>
+                  <h3 className="landing-about-title">Mentors + industry</h3>
+                  <p className="landing-about-copy">
+                    Meet experts, get feedback, and refine your story for a live demo arena.
+                  </p>
+                </div>
+              </GlareHover>
+            </AnimatedContent>
+            <AnimatedContent distance={22} duration={0.65} delay={0.14}>
+              <GlareHover glareOpacity={0.09} glareSize={320} className="landing-about-card">
+                <div>
+                  <h3 className="landing-about-title">High-impact tracks</h3>
+                  <p className="landing-about-copy">
+                    Sustainability, hardware, and anything bold with a clear real-world impact.
+                  </p>
+                </div>
+              </GlareHover>
+            </AnimatedContent>
           </div>
         </section>
 
@@ -242,10 +315,19 @@ export default function Home() {
           </div>
           <div className="landing-tracks">
             {tracks.map((track) => (
-              <div key={track.title} className="landing-track">
-                <h3 className="landing-track-title">{track.title}</h3>
-                <p className="landing-track-copy">{track.description}</p>
-              </div>
+              <AnimatedContent
+                key={track.title}
+                distance={24}
+                duration={0.65}
+                delay={0.04}
+              >
+                <GlareHover glareOpacity={0.1} glareSize={360} className="landing-track">
+                  <div>
+                    <h3 className="landing-track-title">{track.title}</h3>
+                    <p className="landing-track-copy">{track.description}</p>
+                  </div>
+                </GlareHover>
+              </AnimatedContent>
             ))}
           </div>
         </section>
@@ -293,10 +375,19 @@ export default function Home() {
           </div>
           <div className="landing-partnerships">
             {partnershipOpportunities.map((item) => (
-              <div key={item.title} className="landing-partnership">
-                <h3 className="landing-partnership-title">{item.title}</h3>
-                <p className="landing-partnership-copy">{item.description}</p>
-              </div>
+              <AnimatedContent
+                key={item.title}
+                distance={22}
+                duration={0.65}
+                delay={0.04}
+              >
+                <GlareHover glareOpacity={0.08} glareSize={340} className="landing-partnership">
+                  <div>
+                    <h3 className="landing-partnership-title">{item.title}</h3>
+                    <p className="landing-partnership-copy">{item.description}</p>
+                  </div>
+                </GlareHover>
+              </AnimatedContent>
             ))}
           </div>
           <p className="landing-partnership-note">

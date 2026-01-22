@@ -1,0 +1,26 @@
+.glare-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.glare-hover__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(var(--gh-angle, -45deg),
+      hsla(0, 0%, 0%, 0) 60%,
+      var(--gh-glare, rgba(255, 255, 255, 0.45)) 70%,
+      hsla(0, 0%, 0%, 0) 100%);
+  background-size: var(--gh-size, 250%) var(--gh-size, 250%), 100% 100%;
+  background-repeat: no-repeat;
+  background-position: -100% -100%, 0 0;
+  pointer-events: none;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glare-hover__overlay {
+    display: none;
+  }
+}
+

@@ -1,0 +1,16 @@
+.decrypted-text {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "ss01" 1;
+}
+
+.decrypted-text__ghost {
+  opacity: 0.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decrypted-text {
+    transition: none;
+  }
+}
+
