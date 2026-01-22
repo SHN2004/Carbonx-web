@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
 import BlurText from './BlurText';
+import DecryptedText from './DecryptedText';
 import ShinyText from './ShinyText';
 
 const useIsDesktop = (minWidth = 768) => {
@@ -90,13 +91,18 @@ export default function HeroIntro() {
             spread={118}
           />
         ) : (
-          <span className="landing-prize-value" aria-label="₹1,00,000">
-            ₹1,00,000
-          </span>
+          <DecryptedText
+            text="₹1,00,000"
+            className="landing-prize-value"
+            durationMs={1200}
+            speedMs={30}
+            chars="0123456789"
+            animateOnView
+            threshold={0.75}
+          />
         )}
         <span className="landing-prize-label">Prize pool</span>
       </div>
     </>
   );
 }
-
