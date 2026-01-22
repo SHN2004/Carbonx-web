@@ -1,11 +1,10 @@
 import ResponsiveParticles from "@/components/ResponsiveParticles";
-import BlurText from "@/components/BlurText";
 import Magnet from "@/components/Magnet";
 import AnimatedContent from "@/components/AnimatedContent";
 import GlareHover from "@/components/GlareHover";
 import DecryptedText from "@/components/DecryptedText";
-import ShinyText from "@/components/ShinyText";
 import LandingNav from "@/components/LandingNav";
+import HeroIntro from "@/components/HeroIntro";
 
 const stats = [
   { label: "Duration", valueNumber: "42", valueSuffix: " hours" },
@@ -127,16 +126,6 @@ export default function Home() {
           alphaParticles
           disableRotation={false}
           pixelRatio={1}
-          mobile={{
-            particleCount: 110,
-            speed: 0.12,
-            moveParticlesOnHover: false,
-            moveParticlesOnDeviceOrientation: false,
-            hoverMode: "container",
-            particleHoverFactor: 0,
-            disableRotation: true,
-            pixelRatio: 0.75,
-          }}
         />
       </div>
 
@@ -156,46 +145,7 @@ export default function Home() {
 
         <main id="content" className="landing-shell">
           <section className="landing-hero" aria-label="CarbonX overview">
-            <BlurText
-              text="Innovation beyond boundaries"
-              className="landing-kicker"
-              animateBy="words"
-              delay={90}
-              direction="bottom"
-              threshold={0.4}
-            />
-            <h1 className="landing-title">
-              <BlurText
-                text="CarbonX"
-                className="landing-title-carbonx"
-                animateBy="characters"
-                delay={30}
-                direction="bottom"
-                threshold={0.6}
-              />{" "}
-              <span className="landing-title-year">
-                <BlurText
-                  text="2026"
-                  animateBy="characters"
-                  delay={45}
-                  direction="bottom"
-                  threshold={0.6}
-                />
-              </span>
-            </h1>
-            <div className="landing-prize" aria-label="Prize pool">
-              <ShinyText
-                text="₹1,00,000"
-                className="landing-prize-value"
-                speed={2.4}
-                delay={1.2}
-                yoyo
-                color="rgba(255, 255, 255, 0.58)"
-                shineColor="rgba(200, 255, 77, 0.92)"
-                spread={118}
-              />
-              <span className="landing-prize-label">Prize pool</span>
-            </div>
+            <HeroIntro />
             <p className="landing-subtitle">
               A 42-hour national hackathon where developers, innovators, and students
               from across India team up to build practical, high-impact solutions.

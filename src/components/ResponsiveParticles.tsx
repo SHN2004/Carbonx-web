@@ -9,18 +9,16 @@ type ParticlesProps = React.ComponentProps<typeof Particles>;
 export type ResponsiveParticlesProps = ParticlesProps & {
   minWidth?: number;
   desktop?: Partial<ParticlesProps>;
-  mobile?: Partial<ParticlesProps>;
 };
 
 export default function ResponsiveParticles({
   minWidth = 768,
   desktop,
-  mobile,
   ...props
 }: ResponsiveParticlesProps) {
   const query = useMemo(() => `(min-width: ${minWidth}px)`, [minWidth]);
   const [isDesktop, setIsDesktop] = useState(() => {
-    if (typeof window === 'undefined') return true;
+    if (typeof window === 'undefined') return false;
     const media = window.matchMedia?.(query);
     return media ? media.matches : true;
   });
@@ -29,12 +27,17 @@ export default function ResponsiveParticles({
     const media = window.matchMedia?.(query);
     if (!media) return;
 
+    const initialTimer = window.setTimeout(() => setIsDesktop(media.matches), 0);
     const update = (event: MediaQueryListEvent) => setIsDesktop(event.matches);
 
     media.addEventListener?.('change', update);
-    return () => media.removeEventListener?.('change', update);
+    return () => {
+      window.clearTimeout(initialTimer);
+      media.removeEventListener?.('change', update);
+    };
   }, [query]);
 
-  const resolved = isDesktop ? { ...props, ...(desktop ?? {}) } : { ...props, ...(mobile ?? {}) };
+  if (!isDesktop) return null;
+  const resolved = { ...props, ...(desktop ?? {}) };
   return <Particles {...resolved} />;
 }
