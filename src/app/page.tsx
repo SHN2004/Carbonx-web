@@ -4,6 +4,8 @@ import Magnet from "@/components/Magnet";
 import AnimatedContent from "@/components/AnimatedContent";
 import GlareHover from "@/components/GlareHover";
 import DecryptedText from "@/components/DecryptedText";
+import ShinyText from "@/components/ShinyText";
+import LandingNav from "@/components/LandingNav";
 
 const stats = [
   { label: "Duration", valueNumber: "42", valueSuffix: " hours" },
@@ -138,14 +140,7 @@ export default function Home() {
             <a className="landing-logo" href="#top" aria-label="CarbonX">
               CarbonX
             </a>
-            <nav className="landing-nav" aria-label="Primary">
-              <a className="landing-nav-link" href="#about">About</a>
-              <a className="landing-nav-link" href="#tracks">Tracks</a>
-              <a className="landing-nav-link" href="#faq">FAQ</a>
-              <a className="landing-nav-cta" href="#register">
-                Register now
-              </a>
-            </nav>
+            <LandingNav />
           </div>
         </header>
 
@@ -162,6 +157,7 @@ export default function Home() {
             <h1 className="landing-title">
               <BlurText
                 text="CarbonX"
+                className="landing-title-carbonx"
                 animateBy="characters"
                 delay={30}
                 direction="bottom"
@@ -178,13 +174,15 @@ export default function Home() {
               </span>
             </h1>
             <div className="landing-prize" aria-label="Prize pool">
-              <DecryptedText
+              <ShinyText
                 text="₹1,00,000"
                 className="landing-prize-value"
-                durationMs={1200}
-                speedMs={34}
-                animateOnView
-                threshold={0.75}
+                speed={2.4}
+                delay={1.2}
+                yoyo
+                color="rgba(255, 255, 255, 0.58)"
+                shineColor="rgba(200, 255, 77, 0.92)"
+                spread={118}
               />
               <span className="landing-prize-label">Prize pool</span>
             </div>

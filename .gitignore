@@ -36,6 +36,12 @@ bun.lockb
 .idea/
 *.iml
 *.log
+.tmp/
+
+# local artifacts (screenshots / dev logs)
+/carbonx-*.png
+/carbonx-*.log
+/design.png
 
 # debug
 npm-debug.log*
