@@ -127,6 +127,16 @@ export default function Home() {
           alphaParticles
           disableRotation={false}
           pixelRatio={1}
+          mobile={{
+            particleCount: 110,
+            speed: 0.12,
+            moveParticlesOnHover: false,
+            moveParticlesOnDeviceOrientation: false,
+            hoverMode: "container",
+            particleHoverFactor: 0,
+            disableRotation: true,
+            pixelRatio: 0.75,
+          }}
         />
       </div>
 

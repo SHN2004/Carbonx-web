@@ -670,16 +670,6 @@
     drop-shadow(0 0 28px rgba(255, 255, 255, 0.12));
 }
 
-@media (max-width: 767px) {
-  .landing-bg {
-    display: none;
-  }
-
-  .landing-surface {
-    background: var(--landing-bg);
-  }
-}
-
 .landing-content {
   position: relative;
   z-index: 1;
