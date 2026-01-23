@@ -17,11 +17,7 @@ export default function ResponsiveParticles({
   ...props
 }: ResponsiveParticlesProps) {
   const query = useMemo(() => `(min-width: ${minWidth}px)`, [minWidth]);
-  const [isDesktop, setIsDesktop] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    const media = window.matchMedia?.(query);
-    return media ? media.matches : true;
-  });
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia?.(query);

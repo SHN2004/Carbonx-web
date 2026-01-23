@@ -9,6 +9,7 @@ export type DecryptedTextProps = {
   className?: string;
   speedMs?: number;
   durationMs?: number;
+  ghostOpacity?: number;
   chars?: string;
   animateOnView?: boolean;
   threshold?: number;
@@ -32,6 +33,7 @@ export default function DecryptedText({
   className,
   speedMs = 24,
   durationMs,
+  ghostOpacity = 0.65,
   chars = defaultChars,
   animateOnView = true,
   threshold = 0.5,
@@ -117,6 +119,7 @@ export default function DecryptedText({
       className={['decrypted-text', isGhosting && 'decrypted-text__ghost', className]
         .filter(Boolean)
         .join(' ')}
+      style={isGhosting ? { opacity: ghostOpacity } : undefined}
       aria-label={text}
     >
       {output}

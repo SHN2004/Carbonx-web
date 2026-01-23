@@ -4,15 +4,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import BlurText from './BlurText';
 import DecryptedText from './DecryptedText';
-import ShinyText from './ShinyText';
 
 const useIsDesktop = (minWidth = 768) => {
   const query = useMemo(() => `(min-width: ${minWidth}px)`, [minWidth]);
-  const [isDesktop, setIsDesktop] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    const media = window.matchMedia?.(query);
-    return media ? media.matches : true;
-  });
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia?.(query);
@@ -79,28 +74,16 @@ export default function HeroIntro() {
       </h1>
 
       <div className="landing-prize" aria-label="Prize pool">
-        {isDesktop ? (
-          <ShinyText
-            text="₹1,00,000"
-            className="landing-prize-value"
-            speed={2.4}
-            delay={1.2}
-            yoyo
-            color="rgba(255, 255, 255, 0.58)"
-            shineColor="rgba(200, 255, 77, 0.92)"
-            spread={118}
-          />
-        ) : (
-          <DecryptedText
-            text="₹1,00,000"
-            className="landing-prize-value"
-            durationMs={1200}
-            speedMs={30}
-            chars="0123456789"
-            animateOnView
-            threshold={0.75}
-          />
-        )}
+        <DecryptedText
+          text="₹1,00,000"
+          className="landing-prize-value"
+          durationMs={1200}
+          speedMs={30}
+          chars="0123456789"
+          ghostOpacity={1}
+          animateOnView
+          threshold={0.75}
+        />
         <span className="landing-prize-label">Prize pool</span>
       </div>
     </>
