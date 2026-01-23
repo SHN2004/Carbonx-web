@@ -11,6 +11,7 @@ export default function LandingNav() {
   const items: NavItem[] = useMemo(
     () => [
       { href: '#about', label: 'About' },
+      { href: '#experience', label: 'Experience' },
       { href: '#tracks', label: 'Tracks' },
       { href: '#faq', label: 'FAQ' },
     ],

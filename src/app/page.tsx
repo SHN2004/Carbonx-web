@@ -5,6 +5,8 @@ import GlareHover from "@/components/GlareHover";
 import DecryptedText from "@/components/DecryptedText";
 import LandingNav from "@/components/LandingNav";
 import HeroIntro from "@/components/HeroIntro";
+import TrackCards from "@/components/TrackCards";
+import MagicBento, { type BentoCardProps } from "@/components/MagicBento";
 
 const stats = [
   { label: "Duration", valueNumber: "42", valueSuffix: " hours" },
@@ -33,6 +35,45 @@ const whyItMatters = [
   "Product exposure",
   "Data & insights",
   "Brand presence where it counts",
+];
+
+const experienceCards: BentoCardProps[] = [
+  {
+    color: "#070012",
+    title: "Build Sprint",
+    description: "Ship a working prototype with ruthless focus and rapid iteration.",
+    label: "42 Hours",
+  },
+  {
+    color: "#070012",
+    title: "Mentor Grid",
+    description: "Fast feedback loops from industry + faculty mentors across tracks.",
+    label: "Guidance",
+  },
+  {
+    color: "#0a0018",
+    title: "Demo Arena",
+    description: "Present live. Tell a story. Win on impact and execution, not slides.",
+    label: "Finale",
+  },
+  {
+    color: "#0a0018",
+    title: "Hardware + EDA",
+    description: "Embedded builds, circuit design, and real-world constraints.",
+    label: "Electrothon",
+  },
+  {
+    color: "#070012",
+    title: "Sustainability",
+    description: "Climate, agritech, and resilient systems that matter outside the room.",
+    label: "Vegathon",
+  },
+  {
+    color: "#070012",
+    title: "Sponsor Edge",
+    description: "Meet teams early, surface talent, and build trust through support.",
+    label: "Partners",
+  },
 ];
 
 const partnershipOpportunities = [
@@ -266,28 +307,32 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="experience" className="landing-section" aria-label="Experience">
+          <div className="landing-section-head">
+            <h2 className="landing-section-title">Experience</h2>
+            <p className="landing-section-hint">Hover to explore.</p>
+          </div>
+          <div className="landing-bento">
+            <MagicBento
+              cards={experienceCards}
+              enableStars={false}
+              mobileMode="carousel"
+              enableSpotlight
+              enableBorderGlow
+              glowColor="200, 255, 77"
+              spotlightRadius={340}
+              enableMagnetism={false}
+              clickEffect={false}
+            />
+          </div>
+        </section>
+
         <section id="tracks" className="landing-section" aria-label="Tracks">
           <div className="landing-section-head">
             <h2 className="landing-section-title">Tracks</h2>
             <p className="landing-section-hint">Pick a lane — or go wildcard.</p>
           </div>
-          <div className="landing-tracks">
-            {tracks.map((track) => (
-              <AnimatedContent
-                key={track.title}
-                distance={24}
-                duration={0.65}
-                delay={0.04}
-              >
-                <GlareHover glareOpacity={0.1} glareSize={360} className="landing-track">
-                  <div>
-                    <h3 className="landing-track-title">{track.title}</h3>
-                    <p className="landing-track-copy">{track.description}</p>
-                  </div>
-                </GlareHover>
-              </AnimatedContent>
-            ))}
-          </div>
+          <TrackCards tracks={tracks} />
         </section>
 
         <section id="why" className="landing-section" aria-label="Why it matters">

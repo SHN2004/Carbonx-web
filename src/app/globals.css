@@ -1094,6 +1094,12 @@ html {
   gap: 0.85rem;
 }
 
+@media (max-width: 767px) {
+  .landing-actions {
+    display: none;
+  }
+}
+
 .landing-button {
   display: inline-flex;
   align-items: center;
@@ -1394,11 +1400,18 @@ html {
   gap: 0.95rem;
 }
 
+.landing-about > * {
+  height: 100%;
+}
+
 .landing-about-card {
   border-radius: 18px;
   border: 1px solid var(--landing-border);
   background: rgba(5, 5, 5, 0.62);
   padding: 1.1rem 1.2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
@@ -1419,6 +1432,21 @@ html {
   margin-top: 0.65rem;
   color: var(--landing-muted);
   line-height: 1.6;
+}
+
+.landing-bento {
+  margin-top: 1.4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.landing-bento .bento-section {
+  width: min(980px, 100%);
+  border-radius: 26px;
+  border: 1px solid rgba(247, 246, 241, 0.1);
+  background: rgba(5, 5, 5, 0.35);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(16px);
 }
 
 .landing-section {
