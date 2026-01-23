@@ -999,6 +999,11 @@
   letter-spacing: 0.02em;
 }
 
+.landing-title-carbonx {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
 .landing-title-year {
   color: var(--landing-dim);
 }

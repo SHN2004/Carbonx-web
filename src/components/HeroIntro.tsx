@@ -51,7 +51,7 @@ export default function HeroIntro() {
       <h1 className="landing-title">
         {isDesktop ? (
           <BlurText
-            text="CarbonX"
+            text="CARBONX"
             className="landing-title-carbonx"
             animateBy="characters"
             delay={30}
@@ -60,7 +60,7 @@ export default function HeroIntro() {
           />
         ) : (
           <span className="landing-title-carbonx" aria-label="CarbonX">
-            CarbonX
+            CARBONX
           </span>
         )}{' '}
         <span className="landing-title-year">
